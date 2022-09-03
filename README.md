@@ -61,7 +61,7 @@ As mentioned above, PowerShellCorpus.zip was processed to obtain a series of fea
 | char_lcase_count   | Count of the number of times uppercase alphabetic characters 'a' (0x61) through 'z' (0x7A) were found in the file        |
 | char_eq_count   | Count of the number of times the literal character '=' (0x3D) was found in the file        |
 | char_space_count   | Count of the number of times the literal character ' ' (0x20) was found in the file        |
-| char_pipe_count   | Count of the number of times the literal character '|' (0x7C) was found in the file        |
+| char_pipe_count   | Count of the number of times the literal character '\|' (0x7C) was found in the file        |
 | char_uscore_count   | Count of the number of times the literal character '_' (0x5F) was found in the file        |
 | char_amp_count   | Count of the number of times the literal character '&' (0x26) was found in the file        |
 | char_excl_count   | Count of the number of times the literal character '!' (0x21) was found in the file        |
