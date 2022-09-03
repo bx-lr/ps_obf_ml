@@ -9,8 +9,11 @@ BEWARE THERE IS MALWARE IN IT!!!
 hxxps://aka\[.\]ms/PowerShellCorpus
 ```
 Source file details: 
+
 SHA1: 5920bb51bf3ed29e69e594d3b211af4c51dfdf84 
+
 File name: PowerShellCorpus.zip
+
 File size: 1342029170 bytes
 
 PowerShellCorpus.zip contains 409876 PowerShell scripts collected in 2017 from GitHub, Technet, PowerShellGallery, and other sources. 
