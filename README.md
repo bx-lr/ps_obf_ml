@@ -147,8 +147,7 @@ https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/abo
         '-isnot' : the objects are not the same type
 ```
 
-2. add features for labeled data (obfuscate the scripts...)
-- obfuscation based features (do in different file once dataset has been generated)
+2. add 'obfuscation' features for labeled data (obfuscate the scripts with the frameworks below, reprocess files, update data set).
     - is obfuscated 0/1 <----- todo
     - obfuscator name <------ todo (script to generate obfuscated samples from)
 ```text    
