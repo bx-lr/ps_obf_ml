@@ -51,6 +51,9 @@ def create_workable_data(file_path, lst_unused_columns):
 		print("Could not find data file. Make sure the file is unzipped...")
 		sys.exit(1)
 		
+	# Remove Duplicates
+	pd_df.drop_duplicates('sha1', inplace=True)
+		
 	# Check to see if duplicate header is present. Remove if there is 
 	if pd_df.at[0, 'sha1'] == 'sha1':
 		pd_df = pd_df.iloc[1:] # .iloc[] integer-loc based indexing for selecting by position 
@@ -84,7 +87,7 @@ if scale_data:
 # Create function to identify the best number of components
 def find_opt_n_components(data_set):
 	'''Find the number of components that can explain the most data.'''
-	set_percentage = .95 # Percentage of data explained
+	set_percentage = .98 # Percentage of data explained
 
 	# The range is the number of components to test
 	for comp in range(2, data_set.shape[1]):
