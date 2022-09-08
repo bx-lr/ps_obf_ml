@@ -14,7 +14,7 @@ Current Models do not include the "sha1" and "fpath" columns
 
 import sys
 import pandas as pd
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 import seaborn as sns; sns.set(style='white')
@@ -104,7 +104,7 @@ def find_opt_n_components(data_set):
 ### Notes ###
 """
 Running the find_opt_n_components varies depending if the data has been scaled
-or not. To reach 95% of data explained the non-scaled data only needs 3 n_components
+or not. To reach 98% of data explained the non-scaled data only needs 4 n_components
 as compared to 49 for the scaled data.
 """
 
@@ -117,12 +117,41 @@ x_pca = final_pca.fit(data_df).transform(data_df)
 
 # Create 3D visualization and see how much variation the x_pca dataset
 # actually accounts for. 
-if scale_data == False:
-	print("\nExplained variation per principal component: {}\n".format(
-		final_pca.explained_variance_ratio_))
-else:
-	#TODO: Create function for scaled data
-	pass
+# Note: We are not moving forward with scaled data 
+print("\nExplained variation per principal component: {}\n".format(
+	final_pca.explained_variance_ratio_))
+
+# Create dataframe used for data visualization
+pca_viz_ = pd.DataFrame()
+pca_viz_['pca-one'] = x_pca[:, 0]
+pca_viz_['pca-two'] = x_pca[:, 1]
+pca_viz_['pca-three'] = x_pca[:, 2]
+pca_viz_['pca-four'] = x_pca[:, 3]
+
+
+# The first two componects account for ~93% of data
+# Graph the first two comps to see if we can visualize some clustering
+comp_scatter = plt.figure()
+sns.scatterplot(
+ 	x=x_pca[:, 0],
+ 	y=x_pca[:, 1],
+ 	#hue="y",
+ 	palette=sns.color_palette("hls", 10)
+ 	)
+
+# 3D plot with the first 3 components
+ax = plt.figure().gca(projection='3d')
+ax.scatter(
+    xs=x_pca[:, 0], 
+    ys=x_pca[:, 1], 
+    zs=x_pca[:, 2], 
+    #c=df.loc[rndperm,:]["y"], 
+    cmap='tab10'
+)
+ax.set_xlabel('pca-one')
+ax.set_ylabel('pca-two')
+ax.set_zlabel('pca-three')
+plt.show()
 
 # Create a function to format weights to readable strings 
 def get_feat_names_from_weights(weights, names):
@@ -138,8 +167,8 @@ def get_feat_names_from_weights(weights, names):
     return(tmp_array)
 
 # Create readable weights per feature 
-pca_weight_strings = get_feat_names_from_weights(final_pca.components_,
-												 data_df.columns.tolist())
+pca_weight_strings = get_feat_names_from_weights(final_pca.components_, 
+	 data_df.columns.tolist())
 
 # Create Dataframes from the transformed outputs
 pca_df = pd.DataFrame(x_pca, columns=[pca_weight_strings])
