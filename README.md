@@ -34,7 +34,7 @@ As mentioned above, PowerShellCorpus.zip was processed to obtain a series of fea
 | vt_malicious   | No data, reserved for future use        |
 | vt_suspicious   | No data, reserved for future use        |
 | avclass_name   | No data, reserved for future use        |
-| is_obf   | No data, reserved for future use        |
+| is_obf   | 3 level factor for obfuscation status. 1:known obfuscated, 2:unknown, 3: known unobfuscated        |
 | obf_name   | No data, reserved for future use        |
 | char_hash_count   | Count of the number of times the literal character '#' (0x23) was found in the file        |
 | char_paren_count   | Count of the number of times the literal character '(' (0x28) and ')' (0x29) was found in the file        |
