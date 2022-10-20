@@ -41,8 +41,9 @@ from sklearn.model_selection import train_test_split#, GridSearchCV
 
 class PS_OBF:
 	'''Class to create a standardization for the way we process data and create models.
-	The class can be instantiated without providing data if you just want to use the 
-	functions to save models. Data will need to be loaded for other methods.
+	When the object is created a transformation will automatically happen that creates a 
+	new dataframe based on standard options, additional transofrmation will happen if 
+	set to true, and PCA models and dataframes will be created. 
 	
 	@Params:
 		csv_path (str) : Locations of the csv file 
