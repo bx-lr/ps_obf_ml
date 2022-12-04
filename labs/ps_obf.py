@@ -27,17 +27,9 @@ pca_model = my_var.pca_model
 
 import os
 import pickle
-#import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
-# from sklearn import svm
-# from sklearn.svm import SVC
-# from sklearn import metrics as mt
-# from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split#, GridSearchCV
-# from matplotlib import pyplot as plt
-# from matplotlib.colors import ListedColormap
-# import warnings
+from sklearn.model_selection import train_test_split
 
 
 class PS_OBF:
@@ -187,7 +179,7 @@ class PS_OBF:
 		# List of features that would not likely be susceptible to scaling issues
 		non_sus_feat_lst = ['doc_char_count', 'doc_avg_line_len', 'doc_min_line_len',
 					        'doc_line_count', 'doc_mcomment_count', 'doc_entropy', 'is_obf',
-							'doc_max_line_len', 'doc_keyword_totals']
+							'doc_max_line_len']#, 'doc_keyword_totals']
 
 		# Start looping through the working data and change the values
 		for row in list(working_data.index.values):
@@ -234,9 +226,8 @@ class PS_OBF:
 		<object>.logreg assignment.  Defaults are preset for logistic regression, but a
 		list of parameters can be passed through to get different results if wanted.
 		@Params:
-
-			'''
-		pass
+		'''
+		raise NotImplementedError()
 
 	def export_model(self, model, write_location):
 		'''Export a model to a .sav file so it can be imported later
@@ -258,8 +249,9 @@ class PS_OBF:
 if __name__ == "__main__":
 	my_var = PS_OBF('../dataset/all_with_keyword_sum.csv', transform= True)
 
-	test_train = my_var.split(my_var.data)
-	pca_test_train = my_var.split(my_var.pca_df)
+	#test_train = my_var.split(my_var.data)
+	#pca_test_train = my_var.split(my_var.pca_df)
+	pca_data = my_var.pca_df
 '''
 
 
