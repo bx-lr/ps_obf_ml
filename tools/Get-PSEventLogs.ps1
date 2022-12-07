@@ -1,10 +1,10 @@
-$path = $args[0]
 
-$outdir = Resolve-Path .
+
+$outdir = Resolve-Path $args[0]
 
 $scripts = @{}
 
-Get-WinEvent -Path $path | Where-Object {$_.Id -eq 4104} | ForEach-Object {
+Get-WinEvent Microsoft-Windows-PowerShell/Operational | Where-Object {$_.Id -eq 4104} | ForEach-Object {
     $scriptid = $_.Properties[3].value
     if ($scripts.ContainsKey($scriptid)){
         $scripts[$scriptid] += , $_.Properties
